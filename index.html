@@ -15,7 +15,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #000000;
+            background-color: #010103;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -53,55 +53,89 @@
             font-style: italic;
         }
 
-        /* 2. UZAY TEMALI ANA SİTE (FORBIDDEN'DAN SONRA) */
+        /* 2. UZAY TEMALI ANA SİTE */
         #hacker-screen {
-            background-color: #020208;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 8888;
-            /* İlk başta tamamen gizli ve görünmez */
             display: none; 
             opacity: 0;
             align-items: center;
             justify-content: center;
             transition: opacity 1s ease-in-out;
+            background: radial-gradient(circle at center, #060919 0%, #010103 100%);
         }
 
-        /* HAREKETLİ UZAY / YILDIZLAR ARKA PLANI */
-        .space-bg {
+        /* DİNAMİK ARKA PLAN ELEMANLARI */
+        .space-container {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #0b0d1b 0%, #020208 100%);
             overflow: hidden;
             z-index: 1;
         }
-        /* Kodla çizilen parıldayan yıldızlar */
-        .space-bg::after {
-            content: "";
+
+        /* PARILDAYAN YILDIZLAR */
+        .stars {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: white;
+            width: 100%;
+            height: 100%;
+            background: transparent;
             box-shadow: 
-                10vw 20vh 2px #fff, 30vw 15vh 1px #fff, 75vw 35vh 3px #fff,
-                85vw 10vh 1px #fff, 50vw 60vh 2px #fff, 15vw 70vh 2px #fff,
-                40vw 80vh 3px #fff, 70vw 85vh 1px #fff, 90vw 55vh 2px #fff,
-                25vw 45vh 1px #fff, 60vw 25vh 2px #fff, 80vw 75vh 3px #fff;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            opacity: 0.8;
-            animation: spaceGlow 4s infinite alternate;
+                15vw 10vh 2px #fff, 35vw 25vh 1px #fff, 80vw 40vh 2px #fff,
+                55vw 70vh 1px #fff, 20vw 80vh 3px #fff, 70vw 85vh 1px #fff,
+                90vw 20vh 2px #fff, 45vw 45vh 1px #fff, 65vw 60vh 2px #fff;
+            opacity: 0.7;
+            animation: starBlink 3s infinite alternate;
         }
 
-        /* HAVALI BEYAZ ANIX HACKER YAZISI */
+        /* KODLA ÇİZİLEN DEV KARA DELİK */
+        .black-hole {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: #000000;
+            /* Işık bükülmesi ve olay ufku efekti */
+            box-shadow: 
+                0 0 40px #000, 
+                0 0 80px #ff5500, 
+                0 0 150px #ffaa00, 
+                0 0 300px rgba(0, 100, 255, 0.3);
+            animation: holeRotate 12s linear infinite;
+        }
+
+        /* DÖNEN DÜNYA (Kara deliğin yörüngesinde gibi köşede) */
+        .earth {
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            /* Dünya katmanları ve atmosfer parlaması */
+            background: radial-gradient(circle at 30% 30%, #00aaff 0%, #0044cc 60%, #001144 100%);
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.5), inset -15px -15px 30px rgba(0,0,0,0.8);
+            animation: earthFloat 6s ease-in-out infinite alternate;
+        }
+        /* Dünya üzerindeki temsili kıtalar */
+        .earth::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(0, 200, 100, 0.2);
+            box-shadow: inset 10px 10px 20px rgba(255,255,255,0.1);
+        }
+
+        /* ORTADAKİ HAVALI YAZI */
         .content-box {
             position: relative;
             z-index: 2;
@@ -112,28 +146,44 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 3.5rem;
             font-weight: 900;
-            letter-spacing: 8px;
+            letter-spacing: 10px;
             text-transform: uppercase;
-            /* Beyaz Siber Parlama Efekti */
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.4);
             animation: textPulse 2s infinite alternate;
         }
 
-        /* ANİMASYONLAR */
-        @keyframes spaceGlow {
-            0% { opacity: 0.4; }
+        /* ANİMASYON MOTORLARI */
+        @keyframes starBlink {
+            0% { opacity: 0.3; }
             100% { opacity: 0.9; }
         }
+        @keyframes holeRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.02); }
+            100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+        }
+        @keyframes earthFloat {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-15px) rotate(10deg); }
+        }
         @keyframes textPulse {
-            0% { transform: scale(0.98); text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); }
-            100% { transform: scale(1.02); text-shadow: 0 0 25px rgba(255, 255, 255, 0.9); }
+            0% { transform: scale(0.97); }
+            100% { transform: scale(1.03); }
         }
 
-        /* Mobil Ekranlar İçin Yazı Boyutu Ayarı */
+        /* MOBİL EKRAN UYUMLULUĞU */
         @media (max-width: 600px) {
             .hacker-title {
-                font-size: 2rem;
-                letter-spacing: 4px;
+                font-size: 2.2rem;
+                letter-spacing: 5px;
+            }
+            .black-hole {
+                width: 220px;
+                height: 220px;
+            }
+            .earth {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
@@ -148,33 +198,34 @@
         <p class="server-info">Apache/2.4.59 (Ubuntu) Server at anixsenior.com Port 443</p>
     </div>
 
-    <!-- SÜRE BİTİNCE AÇILACAK UZAY TEMALI YENİ ANA EKREAN -->
+    <!-- YENİ KARA DELİKLİ VE DÜNYALI UZAY EKRANI -->
     <div id="hacker-screen">
-        <div class="space-bg"></div>
+        <div class="space-container">
+            <div class="stars"></div>
+            <div class="black-hole"></div>
+            <div class="earth"></div>
+        </div>
         <div class="content-box">
             <h1 class="hacker-title">Anix Hacker</h1>
         </div>
     </div>
 
-    <!-- KESİNTİSİZ GEÇİŞ MOTORU -->
+    <!-- GEÇİŞ MOTORU -->
     <script>
         setTimeout(function() {
             var forbidden = document.getElementById('forbidden-screen');
             var hacker = document.getElementById('hacker-screen');
             
             if (forbidden && hacker) {
-                // Beyaz ekranı kapat
                 forbidden.style.display = 'none';
-                
-                // Uzay ekranını devreye sok ve yumuşakça belirginleştir
                 hacker.style.display = 'flex';
                 setTimeout(function() {
                     hacker.style.opacity = '1';
                 }, 50);
             }
-        }, 15000); // Tam 15 saniye (15000 milisaniye) bekletir
+        }, 15000); // 15 Saniye
     </script>
 
 </body>
-    </html>
-    
+            </html>
+                                   
