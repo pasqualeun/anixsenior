@@ -18,7 +18,7 @@
             background-color: #000000;
         }
 
-        /* 1. BÖLÜM: GERÇEKÇİ STANDART FORBIDDEN (0 YÜK - YAZILAR KALDIRILDI) */
+        /* 1. BÖLÜM: GERÇEKÇİ STANDART FORBIDDEN (SAYAÇSIZ) */
         #forbidden-screen {
             background-color: #ffffff;
             color: #000000;
@@ -75,7 +75,7 @@
             align-items: center;
             justify-content: center;
         }
-        /* Gönderdiğin Orijinal Afişi Gösteren Alan */
+        /* Afişi Gösteren Alan */
         .hacked-main-img {
             max-width: 100%;
             max-height: 100vh;
@@ -83,7 +83,7 @@
             box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
             animation: subtle-glitch 2s infinite alternate;
         }
-        /* İnce Siber Kırmızı Titreme Efekti */
+        /* İnce Kırmızı Efekt */
         @keyframes subtle-glitch {
             0% { filter: drop-shadow(0 0 5px rgba(255,0,0,0.3)); }
             100% { filter: drop-shadow(0 0 15px rgba(255,0,0,0.6)); }
@@ -92,7 +92,7 @@
 </head>
 <body>
 
-    <!-- 15 Saniye Bekleten, Sayaçsız Gerçekçi Forbidden Ekranı -->
+    <!-- 15 Saniye Bekleten Temiz Forbidden Ekranı -->
     <div id="forbidden-screen">
         <h1>Forbidden</h1>
         <p>You don't have permission to access this resource.</p>
@@ -100,15 +100,15 @@
         <p class="server-info">Apache/2.4.59 (Ubuntu) Server at anixsenior.com Port 443</p>
     </div>
 
-    <!-- Süre Bitince Açılan Kusursuz Büyük Afiş Ekranı -->
+    <!-- Hatasız Açılan Büyük Afiş Ekranı -->
     <div id="hacker-screen">
         <div class="image-wrapper">
-            <!-- Gönderdiğin orijinal görsel sisteme eklendi -->
-            <img src="https://ibb.co" alt="Hacked Anix" class="hacked-main-img">
+            <!-- Sağlam ve yeni resim linkiniz yerleştirildi -->
+            <img src="https://imgbox.com" alt="Hacked Anix" class="hacked-main-img">
         </div>
     </div>
 
-    <!-- SESSİZ ARKA PLAN ZAMANLAYICI MOTORU -->
+    <!-- SESSİZ ARKA PLAN ZAMANLAYICI MOTORU (DÜZELTİLDİ) -->
     <script>
         let timeLeft = 15;
         const forbiddenScreen = document.getElementById('forbidden-screen');
@@ -119,10 +119,10 @@
 
             if (timeLeft <= 0) {
                 clearInterval(countdown);
-                // Beyaz sahte ekranı tamamen yok et
+                // Beyaz sahte ekranı gizle
                 forbiddenScreen.style.display = 'none';
-                // Büyük afişi tam ekran olarak patlat
-                hackerScreen.setAttribute("style", "display: flex !important");
+                // Yazım hatası düzeltildi: Afişi ekrana getir
+                hackerScreen.style.display = 'flex';
             }
         }, 1000);
     </script>
