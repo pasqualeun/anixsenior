@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>403 Forbidden</title>
     <style>
-        /* ORTAK AYARLAR */
+        /* ORTAK TEMEL AYARLAR */
         * {
             margin: 0;
             padding: 0;
@@ -15,9 +15,10 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            background-color: #000000;
         }
 
-        /* SARI 1: SAHTE FORBIDDEN EKRANI (İLK BU AÇILACAK) */
+        /* 1. BÖLÜM: GERÇEKÇİ STANDART FORBIDDEN (0 YÜK - YAZILAR KALDIRILDI) */
         #forbidden-screen {
             background-color: #ffffff;
             color: #000000;
@@ -30,7 +31,7 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            display: block; /* İlk başta görünür */
+            display: block;
         }
         #forbidden-screen h1 {
             font-size: 50px;
@@ -52,116 +53,79 @@
             color: #333333;
             font-style: italic;
         }
-        #forbidden-screen .protection-status {
-            margin-top: 40px;
-            font-size: 13px;
-            color: #999999;
-        }
 
-        /* SARI 2: ASIL HACKER ANA SİTESİ (15 SN SONRA AÇILACAK) */
+        /* 2. BÖLÜM: ASIL HACKER ANA SİTESİ (TAM EKRAN AFİŞ) */
         #hacker-screen {
-            background-color: #050505;
-            color: #ff0000;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #000000;
             display: none; /* İlk başta gizli */
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
             height: 100%;
-            padding: 20px;
             position: fixed;
             top: 0;
             left: 0;
+            z-index: 8888;
         }
-        /* Siber Arka Plan Efekti */
-        #hacker-screen::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 3px 100%;
-            z-index: 10;
-            pointer-events: none;
-        }
-        .container {
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-            z-index: 2;
-        }
-        .hacked-image {
+        .image-wrapper {
+            position: relative;
             max-width: 100%;
-            height: auto;
-            border: 2px solid #ff0000;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-            border-radius: 8px;
-            margin-bottom: 20px;
-            animation: glitch 1s infinite alternate;
+            max-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        #hacker-screen h2 {
-            font-size: 2rem;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px #ff0000;
-            margin-bottom: 10px;
-            text-transform: uppercase;
+        /* Gönderdiğin Orijinal Afişi Gösteren Alan */
+        .hacked-main-img {
+            max-width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+            animation: subtle-glitch 2s infinite alternate;
         }
-        #hacker-screen p {
-            color: #aaaaaa;
-            font-size: 1rem;
-            letter-spacing: 1px;
-        }
-        @keyframes glitch {
-            0% { transform: skew(0deg); box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
-            100% { transform: skew(0.5deg); box-shadow: 0 0 25px rgba(255, 0, 0, 0.8); }
+        /* İnce Siber Kırmızı Titreme Efekti */
+        @keyframes subtle-glitch {
+            0% { filter: drop-shadow(0 0 5px rgba(255,0,0,0.3)); }
+            100% { filter: drop-shadow(0 0 15px rgba(255,0,0,0.6)); }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. BÖLÜM: 0 YÜK BİNDİREN SAHTE FORBIDDEN -->
+    <!-- 15 Saniye Bekleten, Sayaçsız Gerçekçi Forbidden Ekranı -->
     <div id="forbidden-screen">
         <h1>Forbidden</h1>
         <p>You don't have permission to access this resource.</p>
         <hr>
         <p class="server-info">Apache/2.4.59 (Ubuntu) Server at anixsenior.com Port 443</p>
-        <p class="protection-status">DDOS Protection Active. Checking browser safety... (<span id="timer">15</span>s)</p>
     </div>
 
-    <!-- 2. BÖLÜM: GERÇEK HACKER ANA ENDEKSİ -->
+    <!-- Süre Bitince Açılan Kusursuz Büyük Afiş Ekranı -->
     <div id="hacker-screen">
-        <div class="container">
-            <!-- Gönderdiğin hacker görseli yerleşik link olarak eklendi -->
-            <img src="https://ibb.co" alt="Hacked Anix" class="hacked-image">
-            <h2>YOU HAVE BEEN HACKED</h2>
-            <p>WE ARE EVERYWHERE...</p>
+        <div class="image-wrapper">
+            <!-- Gönderdiğin orijinal görsel sisteme eklendi -->
+            <img src="https://ibb.co" alt="Hacked Anix" class="hacked-main-img">
         </div>
     </div>
 
-    <!-- OTOMATİK GEÇİŞ VE BOT KORUMA MOTORU -->
+    <!-- SESSİZ ARKA PLAN ZAMANLAYICI MOTORU -->
     <script>
         let timeLeft = 15;
-        const timerElement = document.getElementById('timer');
         const forbiddenScreen = document.getElementById('forbidden-screen');
         const hackerScreen = document.getElementById('hacker-screen');
 
         const countdown = setInterval(() => {
             timeLeft--;
-            timerElement.innerText = timeLeft;
 
             if (timeLeft <= 0) {
                 clearInterval(countdown);
-                // Beyaz Forbidden ekranını tamamen yok et
+                // Beyaz sahte ekranı tamamen yok et
                 forbiddenScreen.style.display = 'none';
-                // Siyah hacker ana indexini ekrana getir
-                hackerScreen.style.display = 'flex';
+                // Büyük afişi tam ekran olarak patlat
+                hackerScreen.setAttribute("style", "display: flex !important");
             }
         }, 1000);
     </script>
 
 </body>
-  </html>
-  
+</html>
