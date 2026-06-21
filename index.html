@@ -15,7 +15,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #010103;
+            background-color: #000000;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -53,7 +53,7 @@
             font-style: italic;
         }
 
-        /* 2. UZAY TEMALI ANA SİTE */
+        /* 2. SİMSİYAH UZAY TEMALI ANA SİTE */
         #hacker-screen {
             position: fixed;
             top: 0;
@@ -66,7 +66,7 @@
             align-items: center;
             justify-content: center;
             transition: opacity 1s ease-in-out;
-            background: radial-gradient(circle at center, #060919 0%, #010103 100%);
+            background-color: #000000; /* İstediğiniz simsiyah dark tema */
         }
 
         /* DİNAMİK ARKA PLAN ELEMANLARI */
@@ -78,64 +78,74 @@
             z-index: 1;
         }
 
-        /* PARILDAYAN YILDIZLAR */
-        .stars {
+        /* YOĞUN PARILDAYAN SİBER YILDIZLAR */
+        .stars-layer-1, .stars-layer-2 {
             position: absolute;
             width: 100%;
             height: 100%;
             background: transparent;
+        }
+        .stars-layer-1 {
             box-shadow: 
-                15vw 10vh 2px #fff, 35vw 25vh 1px #fff, 80vw 40vh 2px #fff,
-                55vw 70vh 1px #fff, 20vw 80vh 3px #fff, 70vw 85vh 1px #fff,
-                90vw 20vh 2px #fff, 45vw 45vh 1px #fff, 65vw 60vh 2px #fff;
-            opacity: 0.7;
-            animation: starBlink 3s infinite alternate;
+                10vw 15vh 1px #fff, 25vw 35vh 2px #fff, 85vw 20vh 1px #fff,
+                45vw 65vh 1.5px #fff, 70vw 80vh 2px #fff, 90vw 75vh 1px #fff,
+                30vw 85vh 2px #fff, 60vw 10vh 1px #fff, 15vw 50vh 2.5px #fff;
+            animation: starBlink 2s infinite alternate;
+        }
+        .stars-layer-2 {
+            box-shadow: 
+                5vw 70vh 1px #88ccff, 40vw 25vh 1px #ffaa99, 75vw 50vh 2px #fff,
+                95vw 40vh 1.5px #fff, 50vw 90vh 1px #fff, 80vw 15vh 2px #fff,
+                20vw 25vh 1px #fff, 65vw 70vh 1.5px #fff, 85vw 90vh 1px #fff;
+            animation: starBlink 3.5s infinite alternate-reverse;
         }
 
-        /* KODLA ÇİZİLEN DEV KARA DELİK */
+        /* GERÇEKÇİ KOZMİK KARA DELİK */
         .black-hole {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 320px;
-            height: 320px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             background: #000000;
-            /* Işık bükülmesi ve olay ufku efekti */
+            /* Akrepsiyon diski ve gaz bulutu parlaması */
             box-shadow: 
-                0 0 40px #000, 
-                0 0 80px #ff5500, 
-                0 0 150px #ffaa00, 
-                0 0 300px rgba(0, 100, 255, 0.3);
-            animation: holeRotate 12s linear infinite;
+                0 0 30px #000, 
+                0 0 60px #ff3300, 
+                0 0 110px #ffaa00, 
+                0 0 200px rgba(255, 68, 0, 0.4),
+                inset 0 0 40px rgba(0,0,0,1);
+            animation: holePulse 6s ease-in-out infinite alternate;
         }
 
-        /* DÖNEN DÜNYA (Kara deliğin yörüngesinde gibi köşede) */
+        /* DETAYLI GERÇEKÇİ DÜNYA */
         .earth {
             position: absolute;
-            bottom: 10%;
-            right: 10%;
-            width: 90px;
-            height: 90px;
+            bottom: 12%;
+            right: 12%;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
-            /* Dünya katmanları ve atmosfer parlaması */
-            background: radial-gradient(circle at 30% 30%, #00aaff 0%, #0044cc 60%, #001144 100%);
-            box-shadow: 0 0 20px rgba(0, 170, 255, 0.5), inset -15px -15px 30px rgba(0,0,0,0.8);
-            animation: earthFloat 6s ease-in-out infinite alternate;
+            background: radial-gradient(circle at 30% 30%, #00bfff 0%, #0055ff 40%, #001144 85%, #000011 100%);
+            /* Atmosfer parlaması ve derin gölge */
+            box-shadow: 
+                0 0 25px rgba(0, 191, 255, 0.45), 
+                inset -20px -20px 25px rgba(0,0,0,0.95);
+            animation: earthFloat 5s ease-in-out infinite alternate;
         }
-        /* Dünya üzerindeki temsili kıtalar */
+        /* Dünya üzerindeki bulutlar ve kıtalar katmanı */
         .earth::after {
             content: "";
             position: absolute;
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: rgba(0, 200, 100, 0.2);
-            box-shadow: inset 10px 10px 20px rgba(255,255,255,0.1);
+            background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.15) 0%, rgba(0,200,100,0.12) 50%, transparent 100%);
         }
 
-        /* ORTADAKİ HAVALI YAZI */
+        /* ORTADAKİ KUSURSUZ SİBER YAZI */
         .content-box {
             position: relative;
             z-index: 2;
@@ -146,44 +156,46 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 3.5rem;
             font-weight: 900;
-            letter-spacing: 10px;
+            letter-spacing: 12px;
             text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.4);
-            animation: textPulse 2s infinite alternate;
+            /* Beyaz Saf Işık Parlaması */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.95), 0 0 35px rgba(255, 255, 255, 0.5);
+            animation: textGlow 2.5s infinite alternate;
         }
 
-        /* ANİMASYON MOTORLARI */
+        /* ANİMASYON DÖNGÜLERİ */
         @keyframes starBlink {
-            0% { opacity: 0.3; }
+            0% { opacity: 0.2; }
             100% { opacity: 0.9; }
         }
-        @keyframes holeRotate {
-            0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-            50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.02); }
-            100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+        @keyframes holePulse {
+            0% { transform: translate(-50%, -50%) scale(0.98); box-shadow: 0 0 30px #000, 0 0 50px #ff3300, 0 0 90px #ffaa00, 0 0 160px rgba(255, 68, 0, 0.3); }
+            100% { transform: translate(-50%, -50%) scale(1.02); box-shadow: 0 0 35px #000, 0 0 70px #ff4400, 0 0 130px #ffbb00, 0 0 240px rgba(255, 68, 0, 0.5); }
         }
         @keyframes earthFloat {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-15px) rotate(10deg); }
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-12px); }
         }
-        @keyframes textPulse {
-            0% { transform: scale(0.97); }
-            100% { transform: scale(1.03); }
+        @keyframes textGlow {
+            0% { transform: scale(0.98); text-shadow: 0 0 12px rgba(255, 255, 255, 0.8); }
+            100% { transform: scale(1.02); text-shadow: 0 0 30px rgba(255, 255, 255, 1); }
         }
 
-        /* MOBİL EKRAN UYUMLULUĞU */
+        /* MOBİL CİHAZ AYARLARI */
         @media (max-width: 600px) {
             .hacker-title {
-                font-size: 2.2rem;
-                letter-spacing: 5px;
+                font-size: 2.3rem;
+                letter-spacing: 6px;
             }
             .black-hole {
-                width: 220px;
-                height: 220px;
+                width: 240px;
+                height: 240px;
             }
             .earth {
-                width: 60px;
-                height: 60px;
+                width: 65px;
+                height: 65px;
+                bottom: 15%;
+                right: 8%;
             }
         }
     </style>
@@ -198,10 +210,11 @@
         <p class="server-info">Apache/2.4.59 (Ubuntu) Server at anixsenior.com Port 443</p>
     </div>
 
-    <!-- YENİ KARA DELİKLİ VE DÜNYALI UZAY EKRANI -->
+    <!-- SİMSİYAH, GERÇEKÇİ UZAY VE KARA DELİK SİTESİ -->
     <div id="hacker-screen">
         <div class="space-container">
-            <div class="stars"></div>
+            <div class="stars-layer-1"></div>
+            <div class="stars-layer-2"></div>
             <div class="black-hole"></div>
             <div class="earth"></div>
         </div>
@@ -210,7 +223,7 @@
         </div>
     </div>
 
-    <!-- GEÇİŞ MOTORU -->
+    <!-- KESİNTİSİZ GEÇİŞ MOTORU -->
     <script>
         setTimeout(function() {
             var forbidden = document.getElementById('forbidden-screen');
@@ -227,5 +240,4 @@
     </script>
 
 </body>
-            </html>
-                                   
+</html>
