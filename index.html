@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>403 Forbidden</title>
     <style>
-        /* ORTAK TEMEL AYARLAR */
+        /* GENEL SIFIRLAMA */
         * {
             margin: 0;
             padding: 0;
@@ -16,13 +16,13 @@
             height: 100%;
             overflow: hidden;
             background-color: #000000;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        /* 1. BÖLÜM: GERÇEKÇİ STANDART FORBIDDEN (SAYAÇSIZ) */
+        /* 1. SAHTE FORBIDDEN EKRANI (BEYAZ) */
         #forbidden-screen {
             background-color: #ffffff;
             color: #000000;
-            font-family: Arial, Helvetica, sans-serif;
             text-align: center;
             padding-top: 100px;
             position: fixed;
@@ -31,7 +31,6 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            display: block;
         }
         #forbidden-screen h1 {
             font-size: 50px;
@@ -54,45 +53,94 @@
             font-style: italic;
         }
 
-        /* 2. BÖLÜM: ASIL HACKER ANA SİTESİ (TAM EKRAN AFİŞ) */
+        /* 2. UZAY TEMALI ANA SİTE (FORBIDDEN'DAN SONRA) */
         #hacker-screen {
-            background-color: #000000;
-            display: none; /* İlk başta gizli */
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
+            background-color: #020208;
             position: fixed;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 8888;
-        }
-        .image-wrapper {
-            position: relative;
-            max-width: 100%;
-            max-height: 100vh;
-            display: flex;
+            /* İlk başta tamamen gizli ve görünmez */
+            display: none; 
+            opacity: 0;
             align-items: center;
             justify-content: center;
+            transition: opacity 1s ease-in-out;
         }
-        /* Afişi Gösteren Alan */
-        .hacked-main-img {
-            max-width: 100%;
-            max-height: 100vh;
-            object-fit: contain;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
-            animation: subtle-glitch 2s infinite alternate;
+
+        /* HAREKETLİ UZAY / YILDIZLAR ARKA PLANI */
+        .space-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #0b0d1b 0%, #020208 100%);
+            overflow: hidden;
+            z-index: 1;
         }
-        /* İnce Kırmızı Efekt */
-        @keyframes subtle-glitch {
-            0% { filter: drop-shadow(0 0 5px rgba(255,0,0,0.3)); }
-            100% { filter: drop-shadow(0 0 15px rgba(255,0,0,0.6)); }
+        /* Kodla çizilen parıldayan yıldızlar */
+        .space-bg::after {
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            box-shadow: 
+                10vw 20vh 2px #fff, 30vw 15vh 1px #fff, 75vw 35vh 3px #fff,
+                85vw 10vh 1px #fff, 50vw 60vh 2px #fff, 15vw 70vh 2px #fff,
+                40vw 80vh 3px #fff, 70vw 85vh 1px #fff, 90vw 55vh 2px #fff,
+                25vw 45vh 1px #fff, 60vw 25vh 2px #fff, 80vw 75vh 3px #fff;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            opacity: 0.8;
+            animation: spaceGlow 4s infinite alternate;
+        }
+
+        /* HAVALI BEYAZ ANIX HACKER YAZISI */
+        .content-box {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        .hacker-title {
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            /* Beyaz Siber Parlama Efekti */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: textPulse 2s infinite alternate;
+        }
+
+        /* ANİMASYONLAR */
+        @keyframes spaceGlow {
+            0% { opacity: 0.4; }
+            100% { opacity: 0.9; }
+        }
+        @keyframes textPulse {
+            0% { transform: scale(0.98); text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); }
+            100% { transform: scale(1.02); text-shadow: 0 0 25px rgba(255, 255, 255, 0.9); }
+        }
+
+        /* Mobil Ekranlar İçin Yazı Boyutu Ayarı */
+        @media (max-width: 600px) {
+            .hacker-title {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- 15 Saniye Bekleten Temiz Forbidden Ekranı -->
+    <!-- 15 SANİYE BEKLETEN BEYAZ FORBIDDEN EKRANI -->
     <div id="forbidden-screen">
         <h1>Forbidden</h1>
         <p>You don't have permission to access this resource.</p>
@@ -100,32 +148,33 @@
         <p class="server-info">Apache/2.4.59 (Ubuntu) Server at anixsenior.com Port 443</p>
     </div>
 
-    <!-- Hatasız Açılan Büyük Afiş Ekranı -->
+    <!-- SÜRE BİTİNCE AÇILACAK UZAY TEMALI YENİ ANA EKREAN -->
     <div id="hacker-screen">
-        <div class="image-wrapper">
-            <!-- Sağlam ve yeni resim linkiniz yerleştirildi -->
-            <img src="https://imgbox.com" alt="Hacked Anix" class="hacked-main-img">
+        <div class="space-bg"></div>
+        <div class="content-box">
+            <h1 class="hacker-title">Anix Hacker</h1>
         </div>
     </div>
 
-    <!-- SESSİZ ARKA PLAN ZAMANLAYICI MOTORU (DÜZELTİLDİ) -->
+    <!-- KESİNTİSİZ GEÇİŞ MOTORU -->
     <script>
-        let timeLeft = 15;
-        const forbiddenScreen = document.getElementById('forbidden-screen');
-        const hackerScreen = document.getElementById('hacker-screen');
-
-        const countdown = setInterval(() => {
-            timeLeft--;
-
-            if (timeLeft <= 0) {
-                clearInterval(countdown);
-                // Beyaz sahte ekranı gizle
-                forbiddenScreen.style.display = 'none';
-                // Yazım hatası düzeltildi: Afişi ekrana getir
-                hackerScreen.style.display = 'flex';
+        setTimeout(function() {
+            var forbidden = document.getElementById('forbidden-screen');
+            var hacker = document.getElementById('hacker-screen');
+            
+            if (forbidden && hacker) {
+                // Beyaz ekranı kapat
+                forbidden.style.display = 'none';
+                
+                // Uzay ekranını devreye sok ve yumuşakça belirginleştir
+                hacker.style.display = 'flex';
+                setTimeout(function() {
+                    hacker.style.opacity = '1';
+                }, 50);
             }
-        }, 1000);
+        }, 15000); // Tam 15 saniye (15000 milisaniye) bekletir
     </script>
 
 </body>
-</html>
+    </html>
+    
