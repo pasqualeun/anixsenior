@@ -53,99 +53,55 @@
             font-style: italic;
         }
 
-        /* 2. SİMSİYAH UZAY TEMALI ANA SİTE */
+        /* 2. UZAY TEMALI ANA SİTE (FORBIDDEN'DAN SONRA) */
         #hacker-screen {
+            background-color: #020208;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 8888;
+            /* İlk başta tamamen gizli ve görünmez */
             display: none; 
             opacity: 0;
             align-items: center;
             justify-content: center;
             transition: opacity 1s ease-in-out;
-            background-color: #000000; /* İstediğiniz simsiyah dark tema */
         }
 
-        /* DİNAMİK ARKA PLAN ELEMANLARI */
-        .space-container {
+        /* HAREKETLİ UZAY / YILDIZLAR ARKA PLANI */
+        .space-bg {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            background: radial-gradient(circle at center, #0b0d1b 0%, #020208 100%);
             overflow: hidden;
             z-index: 1;
         }
-
-        /* YOĞUN PARILDAYAN SİBER YILDIZLAR */
-        .stars-layer-1, .stars-layer-2 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-        }
-        .stars-layer-1 {
-            box-shadow: 
-                10vw 15vh 1px #fff, 25vw 35vh 2px #fff, 85vw 20vh 1px #fff,
-                45vw 65vh 1.5px #fff, 70vw 80vh 2px #fff, 90vw 75vh 1px #fff,
-                30vw 85vh 2px #fff, 60vw 10vh 1px #fff, 15vw 50vh 2.5px #fff;
-            animation: starBlink 2s infinite alternate;
-        }
-        .stars-layer-2 {
-            box-shadow: 
-                5vw 70vh 1px #88ccff, 40vw 25vh 1px #ffaa99, 75vw 50vh 2px #fff,
-                95vw 40vh 1.5px #fff, 50vw 90vh 1px #fff, 80vw 15vh 2px #fff,
-                20vw 25vh 1px #fff, 65vw 70vh 1.5px #fff, 85vw 90vh 1px #fff;
-            animation: starBlink 3.5s infinite alternate-reverse;
-        }
-
-        /* GERÇEKÇİ KOZMİK KARA DELİK */
-        .black-hole {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: #000000;
-            /* Akrepsiyon diski ve gaz bulutu parlaması */
-            box-shadow: 
-                0 0 30px #000, 
-                0 0 60px #ff3300, 
-                0 0 110px #ffaa00, 
-                0 0 200px rgba(255, 68, 0, 0.4),
-                inset 0 0 40px rgba(0,0,0,1);
-            animation: holePulse 6s ease-in-out infinite alternate;
-        }
-
-        /* DETAYLI GERÇEKÇİ DÜNYA */
-        .earth {
-            position: absolute;
-            bottom: 12%;
-            right: 12%;
-            width: 85px;
-            height: 85px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #00bfff 0%, #0055ff 40%, #001144 85%, #000011 100%);
-            /* Atmosfer parlaması ve derin gölge */
-            box-shadow: 
-                0 0 25px rgba(0, 191, 255, 0.45), 
-                inset -20px -20px 25px rgba(0,0,0,0.95);
-            animation: earthFloat 5s ease-in-out infinite alternate;
-        }
-        /* Dünya üzerindeki bulutlar ve kıtalar katmanı */
-        .earth::after {
+        /* Kodla çizilen parıldayan yıldızlar */
+        .space-bg::after {
             content: "";
             position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.15) 0%, rgba(0,200,100,0.12) 50%, transparent 100%);
+            width: 3px;
+            height: 3px;
+            background: white;
+            box-shadow: 
+                10vw 20vh 2px #fff, 30vw 15vh 1px #fff, 75vw 35vh 3px #fff,
+                85vw 10vh 1px #fff, 50vw 60vh 2px #fff, 15vw 70vh 2px #fff,
+                40vw 80vh 3px #fff, 70vw 85vh 1px #fff, 90vw 55vh 2px #fff,
+                25vw 45vh 1px #fff, 60vw 25vh 2px #fff, 80vw 75vh 3px #fff;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            opacity: 0.8;
+            animation: spaceGlow 4s infinite alternate;
         }
 
-        /* ORTADAKİ KUSURSUZ SİBER YAZI */
+        /* HAVALI BEYAZ ANIX HACKER YAZISI */
         .content-box {
             position: relative;
             z-index: 2;
@@ -156,46 +112,28 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 3.5rem;
             font-weight: 900;
-            letter-spacing: 12px;
+            letter-spacing: 8px;
             text-transform: uppercase;
-            /* Beyaz Saf Işık Parlaması */
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.95), 0 0 35px rgba(255, 255, 255, 0.5);
-            animation: textGlow 2.5s infinite alternate;
+            /* Beyaz Siber Parlama Efekti */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: textPulse 2s infinite alternate;
         }
 
-        /* ANİMASYON DÖNGÜLERİ */
-        @keyframes starBlink {
-            0% { opacity: 0.2; }
+        /* ANİMASYONLAR */
+        @keyframes spaceGlow {
+            0% { opacity: 0.4; }
             100% { opacity: 0.9; }
         }
-        @keyframes holePulse {
-            0% { transform: translate(-50%, -50%) scale(0.98); box-shadow: 0 0 30px #000, 0 0 50px #ff3300, 0 0 90px #ffaa00, 0 0 160px rgba(255, 68, 0, 0.3); }
-            100% { transform: translate(-50%, -50%) scale(1.02); box-shadow: 0 0 35px #000, 0 0 70px #ff4400, 0 0 130px #ffbb00, 0 0 240px rgba(255, 68, 0, 0.5); }
-        }
-        @keyframes earthFloat {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-12px); }
-        }
-        @keyframes textGlow {
-            0% { transform: scale(0.98); text-shadow: 0 0 12px rgba(255, 255, 255, 0.8); }
-            100% { transform: scale(1.02); text-shadow: 0 0 30px rgba(255, 255, 255, 1); }
+        @keyframes textPulse {
+            0% { transform: scale(0.98); text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); }
+            100% { transform: scale(1.02); text-shadow: 0 0 25px rgba(255, 255, 255, 0.9); }
         }
 
-        /* MOBİL CİHAZ AYARLARI */
+        /* Mobil Ekranlar İçin Yazı Boyutu Ayarı */
         @media (max-width: 600px) {
             .hacker-title {
-                font-size: 2.3rem;
-                letter-spacing: 6px;
-            }
-            .black-hole {
-                width: 240px;
-                height: 240px;
-            }
-            .earth {
-                width: 65px;
-                height: 65px;
-                bottom: 15%;
-                right: 8%;
+                font-size: 2rem;
+                letter-spacing: 4px;
             }
         }
     </style>
@@ -210,14 +148,9 @@
         <p class="server-info">Apache/2.4.59 (Ubuntu) Server at anixsenior.com Port 443</p>
     </div>
 
-    <!-- SİMSİYAH, GERÇEKÇİ UZAY VE KARA DELİK SİTESİ -->
+    <!-- SÜRE BİTİNCE AÇILACAK UZAY TEMALI YENİ ANA EKREAN -->
     <div id="hacker-screen">
-        <div class="space-container">
-            <div class="stars-layer-1"></div>
-            <div class="stars-layer-2"></div>
-            <div class="black-hole"></div>
-            <div class="earth"></div>
-        </div>
+        <div class="space-bg"></div>
         <div class="content-box">
             <h1 class="hacker-title">Anix Hacker</h1>
         </div>
@@ -230,13 +163,16 @@
             var hacker = document.getElementById('hacker-screen');
             
             if (forbidden && hacker) {
+                // Beyaz ekranı kapat
                 forbidden.style.display = 'none';
+                
+                // Uzay ekranını devreye sok ve yumuşakça belirginleştir
                 hacker.style.display = 'flex';
                 setTimeout(function() {
                     hacker.style.opacity = '1';
                 }, 50);
             }
-        }, 15000); // 15 Saniye
+        }, 15000); // Tam 15 saniye (15000 milisaniye) bekletir
     </script>
 
 </body>
