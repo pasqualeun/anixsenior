@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>403 Forbidden</title>
+    <title>ANIXSENIOR</title>
     <style>
         /* GENEL SIFIRLAMA */
         * {
@@ -14,12 +14,14 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            overflow-x: hidden;
             background-color: #000000;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        /* 1. SAHTE FORBIDDEN EKRANI (BEYAZ) */
+        /* ========================================================
+           1. ANİX BABA 31 VE BEKLEME EKRANLARI (0 YÜK)
+           ======================================================== */
         #forbidden-screen {
             background-color: #ffffff;
             color: #000000;
@@ -30,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 9999;
+            z-index: 99999;
         }
         #forbidden-screen h1 {
             font-size: 50px;
@@ -53,74 +55,13 @@
             font-style: italic;
         }
 
-        /* 2. UZAY TEMALI ANA SİTE */
-        #hacker-screen {
-            background-color: #020208;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 8888;
-            display: none; 
-            opacity: 0;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 1s ease-in-out;
-        }
-
-        /* HAREKETLİ UZAY / YILDIZLAR ARKA PLANI */
-        .space-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, #0b0d1b 0%, #020208 100%);
-            overflow: hidden;
-            z-index: 1;
-        }
-        .space-bg::after {
-            content: "";
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: white;
-            box-shadow: 
-                10vw 20vh 2px #fff, 30vw 15vh 1px #fff, 75vw 35vh 3px #fff,
-                85vw 10vh 1px #fff, 50vw 60vh 2px #fff, 15vw 70vh 2px #fff,
-                40vw 80vh 3px #fff, 70vw 85vh 1px #fff, 90vw 55vh 2px #fff,
-                25vw 45vh 1px #fff, 60vw 25vh 2px #fff, 80vw 75vh 3px #fff;
-            top: 0; left: 0; bottom: 0; right: 0;
-            opacity: 0.8;
-            animation: spaceGlow 4s infinite alternate;
-        }
-
-        /* HAVALI BEYAZ ANIX SENIOR YAZISI */
-        .content-box {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-        .hacker-title {
-            color: #ffffff;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 3.5rem;
-            font-weight: 900;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5);
-            animation: textPulse 2s infinite alternate;
-        }
-
-        /* BOT TARPIT (KAYNAK TÜKETME) ENGELLEME EKRANI */
         #waf-shield-screen {
             background-color: #030307;
             color: #ff2222;
             font-family: 'Courier New', Courier, monospace;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 100000;
+            z-index: 1000000;
             display: none;
             padding: 30px;
             overflow-y: auto;
@@ -148,14 +89,216 @@
         .log-line { margin-bottom: 6px; }
         .log-line span { color: #ffaa00; }
 
-        @keyframes spaceGlow { 0% { opacity: 0.4; } 100% { opacity: 0.9; } }
-        @keyframes textPulse { 0% { transform: scale(0.98); text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); } 100% { transform: scale(1.02); text-shadow: 0 0 25px rgba(255, 255, 255, 0.9); } }
-        @media (max-width: 600px) { .hacker-title { font-size: 2rem; letter-spacing: 4px; } .waf-box { margin: 10% auto; padding: 15px; } }
+        /* ========================================================
+           2. SİBER PREMIUM ARAYÜZ STİLLERİ
+           ======================================================== */
+        #hacker-screen {
+            background-color: #030308;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 88888;
+            display: none; 
+            opacity: 0;
+            overflow-y: auto;
+            transition: opacity 1s ease-in-out;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        /* Arka Plan Izgara Hissi (0 Sunucu Yükü) */
+        .premium-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 102, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 204, 0, 0.04) 0%, transparent 40%),
+                #030308;
+            z-index: 1;
+        }
+        .premium-bg::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.7;
+        }
+        /* Üst Menü Navbar */
+        .nav-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 8%;
+            z-index: 10;
+        }
+        .brand-logo {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 900;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+        .brand-logo span { color: #0066ff; }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #8a8d98;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: default;
+        }
+        
+        /* HAREKETLİ ELEKTRİKLİ / ŞİMŞEKLİ TELEGRAM ROZETİ */
+        .status-badge-electric {
+            background: rgba(0, 255, 102, 0.05);
+            border: 1px solid rgba(0, 255, 102, 0.4);
+            color: #00ff66;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            font-family: monospace;
+            letter-spacing: 1px;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.2), inset 0 0 10px rgba(0, 255, 102, 0.1);
+            animation: lightning-glow 2s infinite linear;
+            text-decoration: none;
+        }
+        
+        /* Simetrik Şimşek Patlaması ve Akım Animasyonu */
+        @keyframes lightning-glow {
+            0% {
+                box-shadow: 0 0 8px rgba(0, 255, 102, 0.3), inset 0 0 6px rgba(0, 255, 102, 0.1);
+                border-color: rgba(0, 255, 102, 0.4);
+            }
+            15% {
+                box-shadow: 0 0 25px rgba(0, 255, 102, 0.9), inset 0 0 15px rgba(0, 255, 102, 0.6);
+                border-color: #00ff66;
+                text-shadow: 0 0 5px #fff;
+            }
+            17% {
+                box-shadow: 0 0 10px rgba(0, 255, 102, 0.3), inset 0 0 6px rgba(0, 255, 102, 0.1);
+                border-color: rgba(0, 255, 102, 0.3);
+            }
+            20% {
+                box-shadow: 0 0 30px rgba(0, 255, 102, 1), inset 0 0 20px rgba(0, 255, 102, 0.7);
+                border-color: #ffffff;
+            }
+            23% {
+                box-shadow: 0 0 8px rgba(0, 255, 102, 0.3), inset 0 0 6px rgba(0, 255, 102, 0.1);
+                border-color: rgba(0, 255, 102, 0.4);
+            }
+            85% {
+                box-shadow: 0 0 12px rgba(0, 255, 102, 0.4), inset 0 0 8px rgba(0, 255, 102, 0.2);
+                border-color: rgba(0, 255, 102, 0.5);
+            }
+            88% {
+                box-shadow: 0 0 22px rgba(0, 255, 102, 0.8), inset 0 0 12px rgba(0, 255, 102, 0.5);
+                border-color: #00ff66;
+            }
+            91% {
+                box-shadow: 0 0 8px rgba(0, 255, 102, 0.2), inset 0 0 4px rgba(0, 255, 102, 0.1);
+                border-color: rgba(0, 255, 102, 0.3);
+            }
+            100% {
+                box-shadow: 0 0 8px rgba(0, 255, 102, 0.3), inset 0 0 6px rgba(0, 255, 102, 0.1);
+                border-color: rgba(0, 255, 102, 0.4);
+            }
+        }
+
+        /* Ana İçerik Alanı (Asimetrik Düzen) */
+        .main-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 8% 60px 8%;
+            gap: 5%;
+        }
+        .left-hero { flex: 1.2; }
+        .tagline {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            color: #0066ff;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        .main-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+        
+        /* GÖRSELDEKİ MOR/MAVİ DEGRADE GEÇİŞİ */
+        .main-title span {
+            background: linear-gradient(135deg, #b0b0ff 0%, #6868ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .custom-slogan {
+            font-size: 1.4rem;
+            font-family: 'Courier New', Courier, monospace;
+            color: #ffcc00;
+            font-weight: bold;
+            border-left: 3px solid #ffcc00;
+            padding-left: 15px;
+            margin-bottom: 35px;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+        }
+
+        /* Sağ Panel - Cyber Kart Yapıları */
+        .right-panels { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .cyber-card {
+            background: rgba(11, 13, 27, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .cyber-card:hover {
+            border-color: rgba(0, 102, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .card-header-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .card-title { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.5px; }
+        .card-title span { color: #0066ff; }
+        .card-desc { color: #8a8d98; font-size: 0.9rem; line-height: 1.5; }
+
+        @keyframes pulse { 0% { opacity: 0.4; } 100% { opacity: 1; } }
+        @media (max-width: 992px) {
+            .main-wrapper { flex-direction: column; padding-top: 140px; text-align: center; }
+            .main-title { font-size: 2.5rem; }
+            .custom-slogan { font-size: 1.1rem; border-left: none; padding-left: 0; border-bottom: 2px solid #ffcc00; padding-bottom: 10px; }
+            .nav-links { display: none; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- TARPIT - CİHAZ KAYNAĞINI TÜKETEN SİBER DUVAR -->
+    <!-- TARPIT - CİHAZ KAYNAĞINI TÜKETEN SİBER DUVAR EKRANI -->
     <div id="waf-shield-screen">
         <div class="waf-box">
             <h1>[ WAF / ADVANCED DEVICE DEGRADATION ACTIVE ]</h1>
@@ -171,7 +314,7 @@
         </div>
     </div>
 
-    <!-- 15 SANİYE BEKLETEN BEYAZ FORBIDDEN EKRANI -->
+    <!-- SAHTE FORBIDDEN EKRANI (0 SUNUCU YÜKÜ) -->
     <div id="forbidden-screen">
         <h1>Forbidden</h1>
         <p>You don't have permission to access this resource.</p>
@@ -179,19 +322,63 @@
         <p class="server-info">Apache/2.4.59 (Ubuntu) Server at anixsenior.com Port 443</p>
     </div>
 
-    <!-- SÜRE BİTİNCE AÇILACAK UZAY TEMALI YENİ ANA EKRAN -->
+    <!-- ANA PANEL -->
     <div id="hacker-screen">
-        <div class="space-bg"></div>
-        <div class="content-box">
-            <h1 class="hacker-title">Anix Senior</h1>
-        </div>
+        <div class="premium-bg"></div>
+        
+        <nav class="nav-container">
+            <div class="brand-logo">ANIX<span>SENIOR</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#layers">Katmanlar</a></li>
+                <li><a href="#systems">Sistemler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+            <!-- Elektrikli Yeni Telegram Buton Linki -->
+            <a href="https://t.me" target="_blank" class="status-badge-electric">
+                Telegram: yendimki
+            </a>
+        </nav>
+
+        <main class="main-wrapper">
+            <div class="left-hero">
+                <span class="tagline">Siber Güvenlik / Full-Stack / Dijital Mimari</span>
+                <!-- Yeni Başlık ve Renk Düzenlemesi -->
+                <h1 class="main-title">Sistemleri kırmanın yanında<br><span>Kusursuz korur ve işlerim.</span></h1>
+                <div class="custom-slogan">
+                    "Deneyebilirsin Ama Sana Olacakları Bir Allah Bir Ben Bilirim"
+                </div>
+            </div>
+
+            <div class="right-panels">
+                <div class="cyber-card">
+                    <div class="card-header-info">
+                        <div class="card-title">Anix <span>Shield</span></div>
+                    </div>
+                    <p class="card-desc">Siber güvenlikte ofansif bakış açısı. Gelişmiş koruma kalkanları, istemci tabanlı Tarpit mimarileri ve mantıksal zafiyet denetimleri.</p>
+                </div>
+
+                <div class="cyber-card">
+                    <div class="card-header-info">
+                        <div class="card-title">Anix <span>Core</span></div>
+                    </div>
+                    <p class="card-desc">Yüksek performanslı, optimize edilmiş premium web altyapıları. Sunucuya sıfır yük bindiren stabil ön-yüz mimarileri.</p>
+                </div>
+
+                <div class="cyber-card">
+                    <div class="card-header-info">
+                        <div class="card-title">Anix <span>Lab</span></div>
+                    </div>
+                    <p class="card-desc">Deneysel siber güvenlik betikleri, otomasyon araçları ve dijital dünyadaki kırılganlıkları ölçen özel projeler.</p>
+                </div>
+            </div>
+        </main>
     </div>
-        <!-- PROFESYONEL YAZILIMSAL DDOS / Gelişmiş Tarpit Motoru (Oturum Tabanlı) -->
     <script>
         (function() {
-            // --- GELİŞMİŞ GÜVENLİK AYARLARI ---
-            const RATE_LIMIT_SEC = 3; // 1 saniyede yapılabilecek maksimum istek sınırı
-            const BAN_TIME_MS = 1800000; // Cihazın döngüde tutulacağı süre (30 Dakika)
+            // HIZ SINIRI VE BAN PARAMETRELERİ
+            const RATE_LIMIT_SEC = 3; 
+            const BAN_TIME_MS = 1800000; 
 
             const nowMs = Date.now();
 
@@ -199,7 +386,7 @@
                 document.getElementById('log-token').innerText = 'ANIX-' + Math.random().toString(36).substr(2, 9).toUpperCase();
             }
 
-            // 1. AŞAMA: MEVCUT SEKMEDE BANLI MI KONTROLÜ
+            // TARPIT AKTİFLİK DURUMU (0 SUNUCU YÜKÜ)
             const isBanned = sessionStorage.getItem('anix_tarpit_ban');
             const banUntil = sessionStorage.getItem('anix_tarpit_ban_time');
 
@@ -211,17 +398,11 @@
                 sessionStorage.removeItem('anix_tarpit_ban_time');
             }
 
-            // 2. AŞAMA: GELİŞMİŞ CANLI HIZ SINIRLAMA KONTROLÜ (Yenileme ve yeni girişte sıfırlanır)
             let requestTimestamps = JSON.parse(sessionStorage.getItem('anix_request_timestamps')) || [];
-            
-            // Son 1 saniye dışındaki eski kayıtları temizle
             requestTimestamps = requestTimestamps.filter(timestamp => nowMs - timestamp < 1000);
-            
-            // Mevcut isteği ekle
             requestTimestamps.push(nowMs);
             sessionStorage.setItem('anix_request_timestamps', JSON.stringify(requestTimestamps));
 
-            // Eğer son 1 saniyede yapılan istek sayısı limiti aştıysa botu tuzağa düşür
             if (requestTimestamps.length > RATE_LIMIT_SEC) {
                 sessionStorage.setItem('anix_tarpit_ban', 'true');
                 sessionStorage.setItem('anix_tarpit_ban_time', (nowMs + BAN_TIME_MS).toString());
@@ -229,7 +410,7 @@
                 return;
             }
 
-            // BOTUN CPU VE RAM KAYNAKLARINI AGRESİF TÜKETEN GÜÇLÜ SONSUZ DÖNGÜ (TARPIT) MOTORU
+            // SALDIRGAN CİHAZIN KAYNAKLARINI TÜKETEN DÖNGÜ (AĞIR 31 ÇEKİYOR)
             function executeTarpit() {
                 document.getElementById('waf-shield-screen').style.display = 'block';
                 document.getElementById('forbidden-screen').style.display = 'none';
@@ -249,19 +430,23 @@
                 }, 50);
             }
 
-            // 3. AŞAMA: GÜVENLİ KULLANICILAR İÇİN GEÇİŞ MOTORU
+            // GÜVENLİ PENCERE YENİLEME VE SEKME KORUMA MANTIĞI
+            // Kullanıcı sayfayı yenilese bile 15 saniye barajı her defasında sıfırdan tetiklenir.
+            localStorage.setItem('page_accessed_now', 'false');
+
             setTimeout(function() {
                 var forbidden = document.getElementById('forbidden-screen');
                 var hacker = document.getElementById('hacker-screen');
                 
                 if (forbidden && hacker && sessionStorage.getItem('anix_tarpit_ban') !== 'true') {
                     forbidden.style.display = 'none';
-                    hacker.style.display = 'flex';
+                    hacker.style.display = 'block'; 
                     setTimeout(function() {
                         hacker.style.opacity = '1';
                     }, 50);
+                    localStorage.setItem('page_accessed_now', 'true');
                 }
-            }, 15000); // 15 saniye sonra geçiş yapar
+            }, 15000); // 15 Saniyelik bekleme ve otomatik geçiş süresi tam olarak korunuyor.
         })();
     </script>
 </body>
