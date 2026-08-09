@@ -4,187 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WARQ STRESS - L4 / L7 Yük Testi</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://tailwindcss.com"></script>
-    <!-- Google Fonts (Inter) -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <!-- Harici CSS Dosyasının Bağlantısı -->
+    <!-- 2. Parçadaki CSS dosyanızın bağlantısı -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen relative overflow-x-hidden flex flex-col justify-between custom-bg">
+<body>
 
     <!-- Arka Plandaki Büyük Kırmızımsı Yazı -->
     <div class="watermark-bg">WARQ STRESS</div>
 
-    <!-- ANA İÇERİK ALANI (SOL VE ORTA KISIM) -->
-    <div class="flex-1 flex flex-col pr-0 lg:pr-64">
+    <!-- ANA İÇERİK ALANI -->
+    <div class="main-container">
         
         <!-- Üst Menü (Navbar) -->
-        <header class="w-full px-6 py-4 flex items-center justify-between border-b border-red-950/40 relative z-10">
-            <div class="flex items-center space-x-8">
-                <!-- Logo alanı -->
-                <div class="flex items-center space-x-2 font-bold text-white tracking-wider">
-                    <span class="text-red-500">■</span> WARQ STRESS
-                </div>
-                <!-- Menü Linkleri -->
-                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-400">
-                    <a href="#" class="hover:text-red-400 transition">Platform</a>
-                    <a href="#" class="hover:text-red-400 transition">Yöntemler</a>
-                    <a href="#" class="hover:text-red-400 transition">Fiyatlandırma</a>
-                    <a href="#" class="hover:text-red-400 transition">SSS</a>
-                </nav>
+        <header>
+            <div class="logo-area">
+                <span class="logo-square">■</span> WARQ STRESS
             </div>
-
-            <!-- Üst Sağ Butonlar -->
-            <div class="flex items-center space-x-4">
-                <a href="#" class="text-sm font-medium text-gray-300 hover:text-white transition">Giriş yap</a>
-                <a href="#" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-medium transition shadow-lg shadow-red-600/20">Hesap oluşturmak</a>
+            <nav>
+                <a href="#">Platform</a>
+                <a href="#">Yöntemler</a>
+                <a href="#">Fiyatlandırma</a>
+                <a href="#">SSS</a>
+            </nav>
+            <div class="nav-buttons">
+                <a href="#" class="btn-login">Giriş yap</a>
+                <a href="#" class="btn-register">Hesap oluşturmak</a>
             </div>
         </header>
 
         <!-- Ana Kahramanlık Bölümü (Hero Section) -->
-        <main class="flex-1 flex flex-col justify-center px-6 lg:px-16 py-12 max-w-4xl relative z-10">
-            
+        <main>
             <!-- Sistem Durumu Butonu -->
-            <div class="inline-flex items-center bg-red-950/30 border border-red-900/40 px-3 py-1.5 rounded-full text-xs font-medium text-red-200 w-max mb-8">
+            <div class="status-badge">
                 <span class="blink-dot"></span> <!-- Yanıp sönen kırmızı daire -->
                 Sistemler Aktif
             </div>
 
             <!-- Ana Başlık -->
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-                Sahip olduğunuz altyapı için kontrollü L4 / L7 yük testi.
-            </h1>
+            <h1>Sahip olduğunuz altyapı için kontrollü L4 / L7 yük testi.</h1>
 
             <!-- Alt Açıklama -->
-            <p class="text-base md:text-lg text-gray-400 max-w-2xl mb-10 leading-relaxed">
+            <p class="description">
                 Erişim, belirteç tabanlıdır. Eş zamanlı kullanıcı sayısını ve süreyi yapılandırın, ardından panelden veya API'den çalıştırın.
             </p>
 
             <!-- Eylem Butonları -->
-            <div class="flex flex-wrap gap-4 mb-16">
-                <a href="#" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded font-medium transition shadow-lg shadow-red-600/20">Erişim sağlayın</a>
-                <a href="#" class="bg-transparent border border-red-800/60 hover:border-red-600 text-gray-300 px-6 py-3 rounded font-medium transition">Bir plan yapılandırın</a>
+            <div class="action-buttons">
+                <a href="#" class="btn-primary">Erişim sağlayın</a>
+                <a href="#" class="btn-secondary">Bir plan yapılandırın</a>
             </div>
 
             <!-- Alt Bilgi Özellik Grubu -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 pt-8 border-t border-red-950/60">
-                <div>
-                    <div class="text-xs font-bold text-red-900/60 tracking-wider uppercase mb-1">Yetki</div>
-                    <div class="text-sm font-semibold text-gray-300">Erişim belirteçleri</div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Yetki</div>
+                    <div class="info-value">Erişim belirteçleri</div>
                 </div>
-                <div>
-                    <div class="text-xs font-bold text-red-900/60 tracking-wider uppercase mb-1">Katmanlar</div>
-                    <div class="text-sm font-semibold text-gray-300">L4 - L7</div>
+                <div class="info-item">
+                    <div class="info-label">Katmanlar</div>
+                    <div class="info-value">L4 - L7</div>
                 </div>
-                <div>
-                    <div class="text-xs font-bold text-red-900/60 tracking-wider uppercase mb-1">Faturalama</div>
-                    <div class="text-sm font-semibold text-gray-300">Kripto</div>
+                <div class="info-item">
+                    <div class="info-label">Faturalama</div>
+                    <div class="info-value">Kripto</div>
                 </div>
             </div>
         </main>
 
         <!-- Footer / İletişim Kanalları -->
-        <footer class="w-full px-6 py-6 border-t border-red-950/40 text-center text-xs text-gray-500 space-y-2 relative z-10">
-            <div>Official Channel: <a href="https://t.me" target="_blank" class="text-gray-400 hover:underline">@webciymis</a></div>
-            <div class="space-x-4">
+        <footer>
+            <div>Official Channel: <a href="https://t.me" target="_blank">@webciymis</a></div>
+            <div class="footer-admins">
                 <span>Admin Telegram:</span>
-                <a href="https://t.me" target="_blank" class="text-gray-400 hover:underline">@yendimki</a>
-                <a href="https://t.me" target="_blank" class="text-gray-400 hover:underline">@w3bciyim</a>
+                <a href="https://t.me" target="_blank">@yendimki</a> | 
+                <a href="https://t.me" target="_blank">@w3bciyim</a>
             </div>
         </footer>
     </div>
 
     <!-- SAĞ YAN PANEL (SIDEBAR) -->
-    <aside class="w-full lg:w-64 sidebar-bg border-t lg:border-t-0 lg:border-l border-red-950/60 lg:fixed lg:right-0 lg:top-0 lg:h-full flex flex-col z-20">
-        <!-- Başlık alanı (ST yerine XYZ yapılmış hali) -->
-        <div class="px-6 py-5 border-b border-red-950/60 font-black text-white text-lg tracking-wider">
-            WARQ STRESS.<span class="text-red-500">XYZ</span>
+    <aside>
+        <!-- Sağ panel başlığı .ST yerine .XYZ yapıldı -->
+        <div class="sidebar-header">
+            WARQ STRESS.<span>XYZ</span>
         </div>
 
-        <div class="flex-1 overflow-y-auto p-4 space-y-6">
+        <div class="sidebar-content">
             <!-- Ana Menü Grubu -->
-            <div>
-                <div class="px-2 text-[10px] font-bold text-red-900/60 tracking-wider uppercase mb-2">Ana</div>
-                <div class="space-y-1">
-                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm bg-red-600/10 text-red-400 font-medium border border-red-500/20">
-                        Kontrol Paneli
-                    </a>
-                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
-                        Fiyatlar
-                    </a>
-                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
-                        Güç Koruması
-                    </a>
+            <div class="menu-group">
+                <div class="group-title">Ana</div>
+                <div class="menu-items">
+                    <a href="#" class="menu-item active">Kontrol Paneli</a>
+                    <a href="#" class="menu-item">Fiyatlar</a>
+                    <a href="#" class="menu-item">Güç Koruması</a>
                 </div>
             </div>
 
             <!-- Panel Grubu -->
-            <div>
-                <div class="px-2 text-[10px] font-bold text-red-900/60 tracking-wider uppercase mb-2">Panel</div>
-                <div class="space-y-1">
-                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
-                        Saldırı Paneli
-                    </a>
-                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 transition">
-                        API Yöneticisi
-                    </a>
+            <div class="menu-group">
+                <div class="group-title">Panel</div>
+                <div class="menu-items">
+                    <a href="#" class="menu-item">Saldırı Paneli</a>
+                    <a href="#" class="menu-item">API Yöneticisi</a>
                 </div>
             </div>
 
             <!-- Faturalandırma Grubu -->
-            <div>
-                <div class="px-2 text-[10px] font-bold text-red-900/60 tracking-wider uppercase mb-2">Faturalandırma</div>
-                <div class="space-y-1">
-                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
-                        Mevduat
-                    </a>
-                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
-                        Faturam
-                    </a>
+            <div class="menu-group">
+                <div class="group-title">Faturalandırma</div>
+                <div class="menu-items">
+                    <a href="#" class="menu-item">Mevduat</a>
+                    <a href="#" class="menu-item">Faturam</a>
                 </div>
             </div>
 
             <!-- Hesap Grubu -->
-            <div>
-                <div class="px-2 text-[10px] font-bold text-red-900/60 tracking-wider uppercase mb-2">Hesap</div>
-                <div class="space-y-1">
-                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
-                        Destek
-                    </a>
-                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
-                        Hizmet Şartları
-                    </a>
+            <div class="menu-group">
+                <div class="group-title">Hesap</div>
+                <div class="menu-items">
+                    <a href="#" class="menu-item">Destek</a>
+                    <a href="#" class="menu-item">Hizmet Şartları</a>
                 </div>
             </div>
         </div>
 
         <!-- Sağ Panel Alt Telgraf Butonu -->
-        <div class="p-4 border-t border-red-950/60">
-            <a href="https://t.me" target="_blank" class="flex items-center justify-center space-x-2 w-full bg-red-950/50 border border-red-900/30 hover:bg-red-900/40 text-gray-200 py-2.5 rounded text-sm font-medium transition">
-                <span>Telgraf</span>
+        <div class="sidebar-footer">
+            <a href="https://t.me" target="_blank" class="btn-telegram">
+                Telgraf
             </a>
         </div>
     </aside>
 
 </body>
-                        </html>
-                /* Zorunlu arka plan ve metin renklerini sabitleyerek patlamaları önlüyoruz */
-.custom-bg {
-    background: linear-gradient(135deg, #090303 0%, #150606 50%, #0d0404 100%) !important;
-    color: #b0b5c0 !important;
+</html>
+/* SIFIRDAN YAZILMIŞ TASARIM VE RENK AYARLARI */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Sağ Menü Arka Planı */
-.sidebar-bg {
-    background-color: #0b0202 !important;
+body {
+    background: linear-gradient(135deg, #090303 0%, #150606 50%, #0d0404 100%) !important;
+    color: #b0b5c0 !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
 }
 
 /* Sol üstteki içi boş dairenin kırmızı yanıp sönme efekti */
 .blink-dot {
     width: 10px;
     height: 10px;
-    border: 2px solid #ef4444 !important; 
+    border: 2px solid #ef4444 !important;
     border-radius: 50%;
     display: inline-block;
     margin-right: 8px;
@@ -207,17 +190,351 @@
     }
 }
 
-/* Arka plan için büyük watermark yazısı efekti (Kırmızı tonda) */
+/* Arka plan için büyük karartılmış logo yazısı */
 .watermark-bg {
     position: absolute;
-    font-size: 14vw;
-    font-weight: 800;
-    color: rgba(239, 68, 68, 0.012) !important;
+    font-size: 12vw;
+    font-weight: 900;
+    color: rgba(239, 68, 68, 0.015) !important;
     user-select: none;
     z-index: 0;
     pointer-events: none;
     white-space: nowrap;
-    top: 40%;
-    left: 50%;
+    top: 45%;
+    left: 45%;
     transform: translate(-50%, -50%);
+}
+
+/* ANA İÇERİK DÜZENİ */
+.main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-right: 260px;
+}
+
+@media (max-width: 1024px) {
+    .main-container {
+        padding-right: 0;
+        margin-bottom: 300px;
+    }
+}
+
+/* Üst Menü (Navbar) */
+header {
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(153, 27, 27, 0.15);
+    background: rgba(11, 2, 2, 0.5);
+    backdrop-filter: blur(8px);
+    position: relative;
+    z-index: 10;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+}
+
+.logo-square {
+    color: #ef4444;
+}
+
+nav {
+    display: flex;
+    gap: 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #9ca3af;
+}
+
+nav a:hover {
+    color: #ef4444;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-login {
+    font-size: 0.9rem;
+    color: #d1d5db;
+}
+
+.btn-login:hover {
+    color: #ffffff;
+}
+
+.btn-register {
+    background-color: #dc2626;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.2);
+}
+
+.btn-register:hover {
+    background-color: #b91c1c;
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+}
+
+/* Ana İçerik (Hero Bölümü) */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    max-width: 900px;
+    position: relative;
+    z-index: 5;
+}
+
+@media (max-width: 640px) {
+    main {
+        padding: 40px 20px;
+    }
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(69, 10, 10, 0.3);
+    border: 1px solid rgba(185, 28, 28, 0.3);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fca5a5;
+    width: max-content;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+}
+
+.description {
+    font-size: 1.05rem;
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 650px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.btn-primary {
+    background-color: #dc2626;
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #b91c1c;
+}
+
+.btn-secondary {
+    border: 1px solid #374151;
+    color: #d1d5db;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    border-color: #4b5563;
+    color: #ffffff;
+}
+
+/* Alt Kart Bilgileri */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(153, 27, 27, 0.15);
+}
+
+.info-item .info-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #7f1d1d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.info-item .info-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+/* Footer */
+footer {
+    padding: 24px 40px;
+    border-top: 1px solid rgba(153, 27, 27, 0.15);
+    text-align: center;
+    font-size: 0.75rem;
+    color: #6b7280;
+    position: relative;
+    z-index: 5;
+}
+
+footer a {
+    color: #9ca3af;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: #ef4444;
+}
+
+.footer-admins {
+    margin-top: 8px;
+}
+
+.footer-admins span {
+    margin-right: 10px;
+}
+
+/* SAĞ YAN PANEL (SIDEBAR) */
+aside {
+    width: 260px;
+    background-color: #0b0202 !important;
+    border-left: 1px solid rgba(153, 27, 27, 0.15);
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+}
+
+@media (max-width: 1024px) {
+    aside {
+        width: 100%;
+        position: relative;
+        height: auto;
+        border-left: 0;
+        border-top: 1px solid rgba(153, 27, 27, 0.15);
+    }
+}
+
+.sidebar-header {
+    padding: 24px;
+    border-bottom: 1px solid rgba(153, 27, 27, 0.15);
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.sidebar-header span {
+    color: #ef4444;
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.menu-group {
+    margin-bottom: 24px;
+}
+
+.group-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #7f1d1d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-left: 8px;
+    margin-bottom: 8px;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.menu-item:hover {
+    background: rgba(31, 41, 55, 0.4);
+    color: #ffffff;
+}
+
+.menu-item.active {
+    background: rgba(220, 38, 38, 0.1);
+    color: #f87171;
+    font-weight: 600;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(153, 27, 27, 0.15);
+}
+
+.btn-telegram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: rgba(153, 27, 27, 0.2);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    color: #fca5a5;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.btn-telegram:hover {
+    background: rgba(220, 38, 38, 0.3);
+    color: #ffffff;
 }
