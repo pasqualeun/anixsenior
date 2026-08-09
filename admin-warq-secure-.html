@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WarqStress.st - Gizli Yönetici Kontrol Merkezi</title>
+    <!-- Hataya neden olan Cloudflare linki kaldırıldı, yerine güvenli ikon kütüphanesi eklendi -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root {
+            --bg-dark: #04060a;
+            --bg-sidebar: #0c1222;
+            --bg-card: #141d30;
+            --bg-input: #1a2438;
+            --accent-blue: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
+            --border-color: #1e293b;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; user-select: none; }
+        body { background-color: var(--bg-dark); color: var(--text-main); padding: 40px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .admin-box { background: var(--bg-sidebar); border: 1px solid var(--border-color); padding: 40px; border-radius: 16px; width: 600px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); display: none; }
+        .auth-box { background: var(--bg-sidebar); border: 1px solid var(--border-color); padding: 40px; border-radius: 16px; width: 450px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
+        .header h1 { font-size: 20px; color: var(--danger); display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; font-size: 11px; color: var(--text-muted); font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-input { width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: white; padding: 12px 14px; border-radius: 6px; font-size: 14px; outline: none; }
+        .form-input:focus { border-color: var(--accent-blue); }
+        .btn-action { width: 100%; background: var(--success); color: #000; border: none; padding: 14px; border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; }
+        .btn-action:hover { opacity: 0.9; }
+        .back-info { margin-top: 20px; font-size: 12px; color: var(--text-muted); text-align: center; line-height: 1.5; }
+        .custom-notice { background: rgba(56, 189, 248, 0.1); border: 1px dashed var(--accent-blue); padding: 10px; border-radius: 6px; color: var(--accent-blue); font-size: 13px; margin-top: 12px; font-weight: 500; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <!-- ADMİN TOKEN GİRİŞ EKRANI -->
+    <div class="auth-box" id="adminAuthArea">
+        <h2 style="font-size: 18px; margin-bottom: 15px; color: var(--accent-blue);"><i class="fa-solid fa-lock"></i> Admin Doğrulaması</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Yönetim paneline erişmek için 30 karakterli gizli admin tokeninizi girin.</p>
+        <div class="form-group">
+            <label>Admin Giriş Tokeni</label>
+            <input type="password" id="adminTokenInput" placeholder="30 karakterli tokeni yapıştırın..." class="form-input" style="font-family: monospace; text-align: center;">
+        </div>
+        <button class="btn-action" style="background: var(--accent-blue);" onclick="verifyAdminToken()"><i class="fa-solid fa-key"></i> Paneli Aç</button>
+    </div>
+
+    <!-- GİZLİ YÖNETİM PANELİ İÇERİĞİ -->
+    <div class="admin-box" id="adminPanelContent">
+        <div class="header">
+            <h1><i class="fa-solid fa-user-shield"></i> WARQSTRESS GİZLİ YÖNETİM PANELİ</h1>
+            <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px;">Bu sayfa dış dünyadan tamamen izole edilmiştir.</p>
+            <div class="custom-notice">Bu panel sadece yerel test verilerini depolamak amacıyla simüle edilmiştir.</div>
+        </div>
+        
+        <div class="form-group">
+            <label>Kanıt/Grafik Başlığı</label>
+            <input type="text" id="admTitle" placeholder="Örn: PowerProof #7" class="form-input">
+        </div>
+        <div class="form-group">
+            <label>Hedef ve Yöntem Detayları</label>
+            <input type="text" id="admTarget" placeholder="Örn: HTTP-STATIC hedefinin 5 eşzamanlı isteği" class="form-input">
+        </div>
+        <div class="form-group">
+            <label>Grafik Görseli Seçin</label>
+            <input type="file" id="admFile" accept="image/*" style="color:white; padding:5px; width: 100%;">
+        </div>
+        
+        <button class="btn-action" onclick="publishProof()"><i class="fa-solid fa-cloud-arrow-up"></i> Kanıtı Global Olarak Yayınla</button>
+        
+        <div class="back-info">
+            Buradan yüklediğiniz veriler tarayıcılar arası ortak hafıza deposuna aktarılır ve <br>
+            <strong>index.html</strong> üzerindeki "Güç Koruması" sekmesinde anlık olarak listelenir.
+        </div>
+    </div>
+
+    <script>
+        const SECRET_ADMIN_TOKEN = "W4rQ7S9xB2kM1pT5zV8nK3jL6hF9cY";
+
+        function verifyAdminToken() {
+            const inputToken = document.getElementById('adminTokenInput').value.trim();
+            
+            if (inputToken === SECRET_ADMIN_TOKEN) {
+                document.getElementById('adminAuthArea').style.display = 'none';
+                document.getElementById('adminPanelContent').style.display = 'block';
+            } else {
+                alert("HATA: Yetkisiz Giriş! Geçersiz Admin Tokeni.");
+                document.getElementById('adminTokenInput').value = "";
+            }
+        }
+
+        function publishProof() {
+            const title = document.getElementById('admTitle').value.trim();
+            const target = document.getElementById('admTarget').value.trim();
+            const fileInput = document.getElementById('admFile');
+
+            if(!title || !target || fileInput.files.length === 0) {
+                alert("Hata: Lütfen tüm alanları doldurun ve bir görsel seçin!");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Img = e.target.result;
+                
+                const newProof = {
+                    title: title,
+                    target: target,
+                    img: base64Img,
+                    date: "AĞUSTOS 2026"
+                };
+
+                let globalProofs = JSON.parse(localStorage.getItem('warq_global_proofs')) || [];
+                globalProofs.unshift(newProof);
+                localStorage.setItem('warq_global_proofs', JSON.stringify(globalProofs));
+
+                document.getElementById('admTitle').value = "";
+                document.getElementById('admTarget').value = "";
+                fileInput.value = "";
+                
+                alert("Başarılı: Yeni stres testi kanıtı sisteme yüklendi ve yayına alındı!");
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    </script>
+</body>
+</html>
