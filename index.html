@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WARQ STRESS - L4 / L7 Yük Testi</title>
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://tailwindcss.com"></script>
     <!-- Google Fonts (Inter) -->
     <link href="https://googleapis.com" rel="stylesheet">
-    <!-- Stil Dosyası Bağlantısı -->
+    <!-- Harici CSS Dosyasının Bağlantısı -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen relative overflow-x-hidden flex flex-col justify-between">
+<body class="min-h-screen relative overflow-x-hidden flex flex-col justify-between custom-bg">
 
     <!-- Arka Plandaki Büyük Kırmızımsı Yazı -->
     <div class="watermark-bg">WARQ STRESS</div>
@@ -86,11 +86,11 @@
 
         <!-- Footer / İletişim Kanalları -->
         <footer class="w-full px-6 py-6 border-t border-red-950/40 text-center text-xs text-gray-500 space-y-2 relative z-10">
-            <div>Official Channel: <a href="https://t.me" target="_blank" class="text-red-400 hover:underline">@webciymis</a></div>
+            <div>Official Channel: <a href="https://t.me" target="_blank" class="text-gray-400 hover:underline">@webciymis</a></div>
             <div class="space-x-4">
                 <span>Admin Telegram:</span>
-                <a href="https://t.me" target="_blank" class="text-red-400 hover:underline">@yendimki</a>
-                <a href="https://t.me" target="_blank" class="text-red-400 hover:underline">@w3bciyim</a>
+                <a href="https://t.me" target="_blank" class="text-gray-400 hover:underline">@yendimki</a>
+                <a href="https://t.me" target="_blank" class="text-gray-400 hover:underline">@w3bciyim</a>
             </div>
         </footer>
     </div>
@@ -168,24 +168,23 @@
     </aside>
 
 </body>
-                      </html>
-                      body {
-    font-family: 'Inter', sans-serif;
-    /* Koyu kırmızımsı/siyah gece modu arka planı */
-    background: linear-gradient(135deg, #090303 0%, #150606 50%, #0d0404 100%);
-    color: #b0b5c0;
+                        </html>
+                /* Zorunlu arka plan ve metin renklerini sabitleyerek patlamaları önlüyoruz */
+.custom-bg {
+    background: linear-gradient(135deg, #090303 0%, #150606 50%, #0d0404 100%) !important;
+    color: #b0b5c0 !important;
 }
 
 /* Sağ Menü Arka Planı */
 .sidebar-bg {
-    background-color: #0b0202;
+    background-color: #0b0202 !important;
 }
 
 /* Sol üstteki içi boş dairenin kırmızı yanıp sönme efekti */
 .blink-dot {
     width: 10px;
     height: 10px;
-    border: 2px solid #ef4444; 
+    border: 2px solid #ef4444 !important; 
     border-radius: 50%;
     display: inline-block;
     margin-right: 8px;
@@ -213,7 +212,7 @@
     position: absolute;
     font-size: 14vw;
     font-weight: 800;
-    color: rgba(239, 68, 68, 0.012);
+    color: rgba(239, 68, 68, 0.012) !important;
     user-select: none;
     z-index: 0;
     pointer-events: none;
