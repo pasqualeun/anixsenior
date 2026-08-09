@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WARQ STRESS - L4 / L7 Yük Testi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter) -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- Stil Dosyası Bağlantısı -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen relative overflow-x-hidden flex flex-col justify-between">
+
+    <!-- Arka Plandaki Büyük Kırmızımsı Yazı -->
+    <div class="watermark-bg">WARQ STRESS</div>
+
+    <!-- ANA İÇERİK ALANI (SOL VE ORTA KISIM) -->
+    <div class="flex-1 flex flex-col pr-0 lg:pr-64">
+        
+        <!-- Üst Menü (Navbar) -->
+        <header class="w-full px-6 py-4 flex items-center justify-between border-b border-red-950/40 relative z-10">
+            <div class="flex items-center space-x-8">
+                <!-- Logo alanı -->
+                <div class="flex items-center space-x-2 font-bold text-white tracking-wider">
+                    <span class="text-red-500">■</span> WARQ STRESS
+                </div>
+                <!-- Menü Linkleri -->
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-400">
+                    <a href="#" class="hover:text-red-400 transition">Platform</a>
+                    <a href="#" class="hover:text-red-400 transition">Yöntemler</a>
+                    <a href="#" class="hover:text-red-400 transition">Fiyatlandırma</a>
+                    <a href="#" class="hover:text-red-400 transition">SSS</a>
+                </nav>
+            </div>
+
+            <!-- Üst Sağ Butonlar -->
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-sm font-medium text-gray-300 hover:text-white transition">Giriş yap</a>
+                <a href="#" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-medium transition shadow-lg shadow-red-600/20">Hesap oluşturmak</a>
+            </div>
+        </header>
+
+        <!-- Ana Kahramanlık Bölümü (Hero Section) -->
+        <main class="flex-1 flex flex-col justify-center px-6 lg:px-16 py-12 max-w-4xl relative z-10">
+            
+            <!-- Sistem Durumu Butonu -->
+            <div class="inline-flex items-center bg-red-950/30 border border-red-900/40 px-3 py-1.5 rounded-full text-xs font-medium text-red-200 w-max mb-8">
+                <span class="blink-dot"></span> <!-- Yanıp sönen kırmızı daire -->
+                Sistemler Aktif
+            </div>
+
+            <!-- Ana Başlık -->
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                Sahip olduğunuz altyapı için kontrollü L4 / L7 yük testi.
+            </h1>
+
+            <!-- Alt Açıklama -->
+            <p class="text-base md:text-lg text-gray-400 max-w-2xl mb-10 leading-relaxed">
+                Erişim, belirteç tabanlıdır. Eş zamanlı kullanıcı sayısını ve süreyi yapılandırın, ardından panelden veya API'den çalıştırın.
+            </p>
+
+            <!-- Eylem Butonları -->
+            <div class="flex flex-wrap gap-4 mb-16">
+                <a href="#" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded font-medium transition shadow-lg shadow-red-600/20">Erişim sağlayın</a>
+                <a href="#" class="bg-transparent border border-red-800/60 hover:border-red-600 text-gray-300 px-6 py-3 rounded font-medium transition">Bir plan yapılandırın</a>
+            </div>
+
+            <!-- Alt Bilgi Özellik Grubu -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 pt-8 border-t border-red-950/60">
+                <div>
+                    <div class="text-xs font-bold text-red-900/60 tracking-wider uppercase mb-1">Yetki</div>
+                    <div class="text-sm font-semibold text-gray-300">Erişim belirteçleri</div>
+                </div>
+                <div>
+                    <div class="text-xs font-bold text-red-900/60 tracking-wider uppercase mb-1">Katmanlar</div>
+                    <div class="text-sm font-semibold text-gray-300">L4 - L7</div>
+                </div>
+                <div>
+                    <div class="text-xs font-bold text-red-900/60 tracking-wider uppercase mb-1">Faturalama</div>
+                    <div class="text-sm font-semibold text-gray-300">Kripto</div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer / İletişim Kanalları -->
+        <footer class="w-full px-6 py-6 border-t border-red-950/40 text-center text-xs text-gray-500 space-y-2 relative z-10">
+            <div>Official Channel: <a href="https://t.me" target="_blank" class="text-red-400 hover:underline">@webciymis</a></div>
+            <div class="space-x-4">
+                <span>Admin Telegram:</span>
+                <a href="https://t.me" target="_blank" class="text-red-400 hover:underline">@yendimki</a>
+                <a href="https://t.me" target="_blank" class="text-red-400 hover:underline">@w3bciyim</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- SAĞ YAN PANEL (SIDEBAR) -->
+    <aside class="w-full lg:w-64 sidebar-bg border-t lg:border-t-0 lg:border-l border-red-950/60 lg:fixed lg:right-0 lg:top-0 lg:h-full flex flex-col z-20">
+        <!-- Başlık alanı (ST yerine XYZ yapılmış hali) -->
+        <div class="px-6 py-5 border-b border-red-950/60 font-black text-white text-lg tracking-wider">
+            WARQ STRESS.<span class="text-red-500">XYZ</span>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-4 space-y-6">
+            <!-- Ana Menü Grubu -->
+            <div>
+                <div class="px-2 text-[10px] font-bold text-red-900/60 tracking-wider uppercase mb-2">Ana</div>
+                <div class="space-y-1">
+                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm bg-red-600/10 text-red-400 font-medium border border-red-500/20">
+                        Kontrol Paneli
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
+                        Fiyatlar
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
+                        Güç Koruması
+                    </a>
+                </div>
+            </div>
+
+            <!-- Panel Grubu -->
+            <div>
+                <div class="px-2 text-[10px] font-bold text-red-900/60 tracking-wider uppercase mb-2">Panel</div>
+                <div class="space-y-1">
+                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
+                        Saldırı Paneli
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 transition">
+                        API Yöneticisi
+                    </a>
+                </div>
+            </div>
+
+            <!-- Faturalandırma Grubu -->
+            <div>
+                <div class="px-2 text-[10px] font-bold text-red-900/60 tracking-wider uppercase mb-2">Faturalandırma</div>
+                <div class="space-y-1">
+                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
+                        Mevduat
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
+                        Faturam
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hesap Grubu -->
+            <div>
+                <div class="px-2 text-[10px] font-bold text-red-900/60 tracking-wider uppercase mb-2">Hesap</div>
+                <div class="space-y-1">
+                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
+                        Destek
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 rounded text-sm text-gray-400 hover:bg-red-950/40 hover:text-gray-200 transition">
+                        Hizmet Şartları
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sağ Panel Alt Telgraf Butonu -->
+        <div class="p-4 border-t border-red-950/60">
+            <a href="https://t.me" target="_blank" class="flex items-center justify-center space-x-2 w-full bg-red-950/50 border border-red-900/30 hover:bg-red-900/40 text-gray-200 py-2.5 rounded text-sm font-medium transition">
+                <span>Telgraf</span>
+            </a>
+        </div>
+    </aside>
+
+</body>
+                      </html>
+                      body {
+    font-family: 'Inter', sans-serif;
+    /* Koyu kırmızımsı/siyah gece modu arka planı */
+    background: linear-gradient(135deg, #090303 0%, #150606 50%, #0d0404 100%);
+    color: #b0b5c0;
+}
+
+/* Sağ Menü Arka Planı */
+.sidebar-bg {
+    background-color: #0b0202;
+}
+
+/* Sol üstteki içi boş dairenin kırmızı yanıp sönme efekti */
+.blink-dot {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #ef4444; 
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+    animation: pulse-red 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse-red {
+    0% {
+        background-color: rgba(239, 68, 68, 0);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+    50% {
+        background-color: rgba(239, 68, 68, 1);
+        box-shadow: 0 0 12px 5px rgba(239, 68, 68, 0.6);
+    }
+    100% {
+        background-color: rgba(239, 68, 68, 0);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+/* Arka plan için büyük watermark yazısı efekti (Kırmızı tonda) */
+.watermark-bg {
+    position: absolute;
+    font-size: 14vw;
+    font-weight: 800;
+    color: rgba(239, 68, 68, 0.012);
+    user-select: none;
+    z-index: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
